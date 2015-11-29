@@ -1,2 +1,2 @@
-include ':app'
+include ':simple'
 include ':calendar'
