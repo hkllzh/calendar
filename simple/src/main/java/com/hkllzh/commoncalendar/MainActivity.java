@@ -1,9 +1,7 @@
 package com.hkllzh.commoncalendar;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,6 +10,7 @@ import android.view.View;
 
 import com.hkllzh.calendar.annotation.Week;
 import com.hkllzh.calendar.view.CalendarView;
+import com.hkllzh.commoncalendar.cv.MyDraw;
 
 import org.joda.time.DateTime;
 
@@ -19,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CalendarView calView;
     CalAdapter adapter;
+    MyDraw mydraw;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,18 +28,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         adapter = new CalAdapter();
-        adapter.setSelectData(DateTime.now().minusDays(4), Week.WEDNESDAY);
+        adapter.setSelectData(DateTime.now().plusDays(4), Week.MONDAY);
+
+        mydraw = (MyDraw) findViewById(R.id.mydraw);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calView = (CalendarView) findViewById(R.id.calView);
-                calView.setAdapter(adapter);
-                // adapter.notifyDataSetChanged();
+//                 calView = (CalendarView) findViewById(R.id.calView);
+//                 calView.setAdapter(adapter);
+//                 adapter.notifyDataSetChanged();
+                mydraw.start();
             }
         });
-
 
     }
 

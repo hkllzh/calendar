@@ -16,6 +16,12 @@ public class CommonCalItem implements CalItem {
 
     TextView textView;
 
+    private DateTime today;
+
+    public CommonCalItem() {
+        today = DateTime.now();
+    }
+
     @Override
     public int getLayoutResId() {
         return R.layout.cal_item_common;
@@ -31,7 +37,10 @@ public class CommonCalItem implements CalItem {
         if (position < 7) {
             textView.setText("周"+String.valueOf(time.getDayOfWeek()));
         }else{
-            textView.setText(String.valueOf(time.getDayOfMonth()));
+            if (time.getMonthOfYear() == today.getMonthOfYear()){
+                textView.setText(String.valueOf(time.getDayOfMonth()));
+            }
+
         }
 
     }

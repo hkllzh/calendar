@@ -16,4 +16,9 @@
         android:id="@+id/calView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.hkllzh.commoncalendar.cv.MyDraw
+        android:id="@+id/mydraw"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
 </RelativeLayout>
